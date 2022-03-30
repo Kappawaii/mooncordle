@@ -4,7 +4,7 @@ import { VolumeSon } from "./volumeSon";
 
 export default class Configuration {
   public static Default: Configuration = {
-    hasAudio: false,
+    hasAudio: true,
     afficherRegles: true,
     afficherChrono: false,
     volumeSon: VolumeSon.Normal,
@@ -12,7 +12,7 @@ export default class Configuration {
     theme: Theme.Sombre,
   };
 
-  hasAudio: boolean = false;
+  hasAudio: boolean = true;
   afficherRegles: boolean = true;
   afficherChrono: boolean = false;
   volumeSon: VolumeSon = VolumeSon.Normal;

@@ -135,7 +135,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                     contenu += '<p class="fin-de-partie-panel-phrase">Well done you won. Thanks for playing :)</p>';
                 }
                 else {
-                    titre = "Perdu";
+                    titre = "You lost lol";
                     contenu +=
                         '<p class="fin-de-partie-panel-phrase"> \
           The word to find was : ' +

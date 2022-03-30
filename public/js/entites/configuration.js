@@ -14,7 +14,7 @@
     var volumeSon_1 = require("./volumeSon");
     var Configuration = /** @class */ (function () {
         function Configuration() {
-            this.hasAudio = false;
+            this.hasAudio = true;
             this.afficherRegles = true;
             this.afficherChrono = false;
             this.volumeSon = volumeSon_1.VolumeSon.Normal;
@@ -22,7 +22,7 @@
             this.theme = theme_1.Theme.Sombre;
         }
         Configuration.Default = {
-            hasAudio: false,
+            hasAudio: true,
             afficherRegles: true,
             afficherChrono: false,
             volumeSon: volumeSon_1.VolumeSon.Normal,
