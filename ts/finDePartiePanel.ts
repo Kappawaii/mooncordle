@@ -125,7 +125,8 @@ export default class FinDePartiePanel {
           NotificationMessage.ajouterNotificationPanel("Summary copied in clipboard");
         })
         .catch((raison) => {
-          NotificationMessage.ajouterNotificationPanel("Your browser isn't compatible");
+          console.log(raison)
+          NotificationMessage.ajouterNotificationPanel("Your browser isn't compatible :" + raison);
         });
     });
   }
@@ -152,7 +153,7 @@ export default class FinDePartiePanel {
         </p>";
       }
       contenu +=
-        '<p>Summary of your game − <a href="#" id="fin-de-partie-panel-resume-bouton">Partager</a></p> \
+        '<p>Summary of your game − <a href="#" id="fin-de-partie-panel-resume-bouton">Share</a></p> \
           <pre id="fin-de-partie-panel-resume">' +
         this._resumeTexteLegacy +
         "</pre>";

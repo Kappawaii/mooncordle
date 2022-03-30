@@ -117,7 +117,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                     notificationMessage_1.default.ajouterNotificationPanel("Summary copied in clipboard");
                 })
                     .catch(function (raison) {
-                    notificationMessage_1.default.ajouterNotificationPanel("Your browser isn't compatible");
+                    console.log(raison);
+                    notificationMessage_1.default.ajouterNotificationPanel("Your browser isn't compatible :" + raison);
                 });
             });
         };
@@ -144,7 +145,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
         </p>";
                 }
                 contenu +=
-                    '<p>Summary of your game − <a href="#" id="fin-de-partie-panel-resume-bouton">Partager</a></p> \
+                    '<p>Summary of your game − <a href="#" id="fin-de-partie-panel-resume-bouton">Share</a></p> \
           <pre id="fin-de-partie-panel-resume">' +
                         this._resumeTexteLegacy +
                         "</pre>";
