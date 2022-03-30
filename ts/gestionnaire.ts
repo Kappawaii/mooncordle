@@ -74,7 +74,7 @@ export default class Gestionnaire {
         this._compositionMotATrouver = this.decompose(this._motATrouver);
         await this.chargerPropositions(partieEnCours.propositions);
       })
-      .catch(() => NotificationMessage.ajouterNotification("Aucun mot n'a été trouvé pour aujourd'hui"));
+      .catch((reason) => NotificationMessage.ajouterNotification("No word was found for today, DM Kappawaii#9448 on Discord cause he didn't do his job" +reason));
 
     this.afficherReglesSiNecessaire();
   }

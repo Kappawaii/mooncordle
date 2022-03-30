@@ -87,19 +87,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                                 });
                             })
                                 .then(function (motBrut) { return __awaiter(_this, void 0, void 0, function () {
-                                var mot, longueur, premiereLettre, _;
+                                var mot, longueur, premiereLettre;
                                 return __generator(this, function (_a) {
-                                    var _b;
-                                    switch (_a.label) {
-                                        case 0:
-                                            mot = Dictionnaire.nettoyerMot(motBrut);
-                                            longueur = mot.length;
-                                            premiereLettre = mot[0];
-                                            return [4 /*yield*/, (_b = "./mots/listeMotsProposables." + longueur + "." + premiereLettre, __syncRequire ? Promise.resolve().then(function () { return __importStar(require(_b)); }) : new Promise(function (resolve_1, reject_1) { require([_b], resolve_1, reject_1); }).then(__importStar))];
-                                        case 1:
-                                            _ = _a.sent();
-                                            return [2 /*return*/, mot];
-                                    }
+                                    mot = Dictionnaire.nettoyerMot(motBrut);
+                                    longueur = mot.length;
+                                    premiereLettre = mot[0];
+                                    //let _ = await import("./mots/listeMotsProposables." + longueur + "." + premiereLettre);
+                                    return [2 /*return*/, mot];
                                 });
                             }); })];
                         case 1: return [2 /*return*/, _a.sent()];
@@ -129,10 +123,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     switch (_a.label) {
                         case 0:
                             mot = this.nettoyerMot(mot);
-                            return [4 /*yield*/, (_b = "./mots/listeMotsProposables." + longueur + "." + premiereLettre, __syncRequire ? Promise.resolve().then(function () { return __importStar(require(_b)); }) : new Promise(function (resolve_2, reject_2) { require([_b], resolve_2, reject_2); }).then(__importStar))];
+                            return [4 /*yield*/, (_b = "./mots/listeMotsProposables." + longueur + "." + premiereLettre, __syncRequire ? Promise.resolve().then(function () { return __importStar(require(_b)); }) : new Promise(function (resolve_1, reject_1) { require([_b], resolve_1, reject_1); }).then(__importStar))];
                         case 1:
                             ListeMotsProposables = _a.sent();
-                            return [2 /*return*/, mot.length >= 6 && mot.length <= 9 && ListeMotsProposables.default.Dictionnaire.includes(mot)];
+                            return [2 /*return*/, mot.length >= 6 && mot.length <= 10 && ListeMotsProposables.default.Dictionnaire.includes(mot)];
                     }
                 });
             });

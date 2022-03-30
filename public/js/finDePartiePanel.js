@@ -25,6 +25,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
             this._motATrouver = "";
             this._estVictoire = false;
             this._partieEstFinie = false;
+            this.moon2WOWString = '<img src="images/moon2WOW.webp" alt="moon2WOW">';
+            this.moon2NString = '<img src="images/moon2N.webp" alt="moon2N">';
+            this.moon2AString = '<img src="images/moon2A.webp" alt="moon2A">';
             this._datePartie = datePartie;
             this._panelManager = panelManager;
             this._statsButton = document.getElementById("configuration-stats-bouton");
@@ -33,6 +36,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
             }).bind(this));
         }
         FinDePartiePanel.prototype.genererResume = function (estBonneReponse, motATrouver, resultats, dureeMs) {
+            var _this = this;
             var _a;
             var resultatsEmojis = resultats.map(function (mot) {
                 return mot
@@ -54,11 +58,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                     .reduce(function (ligne, statut) {
                     switch (statut) {
                         case lettreStatut_1.LettreStatut.BienPlace:
-                            return ligne + '<span class="emoji-carre-rouge">🟥</span>';
+                            return ligne + _this.moon2WOWString;
                         case lettreStatut_1.LettreStatut.MalPlace:
-                            return ligne + '<span class="emoji-cercle-jaune">🟡</span>';
+                            return ligne + _this.moon2NString;
                         default:
-                            return ligne + '<span class="emoji-carre-bleu">🟦</span>';
+                            return ligne + _this.moon2AString;
                     }
                 }, "");
             });
@@ -162,9 +166,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                         "<div class=\"stats-ligne\"><div class=\"stats-cellule\">Average :</div><div class=\"stats-cellule\">".concat(this.getMoyenne(stats.repartition), "</div></div>") +
                         '<div class="stats-ligne"><div class="stats-cellule">Letters :</div>' +
                         '<div class="stats-cellule">' +
-                        "".concat(stats.lettresRepartitions.bienPlace, "\u00A0\uD83D\uDFE5 ") +
-                        "".concat(stats.lettresRepartitions.malPlace, "\u00A0\uD83D\uDFE1 ") +
-                        "".concat(stats.lettresRepartitions.nonTrouve, "\u00A0\uD83D\uDFE6") +
+                        "".concat(stats.lettresRepartitions.bienPlace, "\u00A0") + this.moon2WOWString +
+                        " ".concat(stats.lettresRepartitions.malPlace, "\u00A0") + this.moon2NString +
+                        " ".concat(stats.lettresRepartitions.nonTrouve, "\u00A0") + this.moon2AString +
                         "</div>" +
                         "</div>" +
                         "</div>";

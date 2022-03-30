@@ -16,7 +16,7 @@ export default class Dictionnaire {
         let mot = Dictionnaire.nettoyerMot(motBrut);
         let longueur = mot.length;
         let premiereLettre = mot[0];
-        let _ = await import("./mots/listeMotsProposables." + longueur + "." + premiereLettre);
+        //let _ = await import("./mots/listeMotsProposables." + longueur + "." + premiereLettre);
         return mot;
       });
   }
@@ -36,7 +36,7 @@ export default class Dictionnaire {
   public static async estMotValide(mot: string, premiereLettre: string, longueur: number): Promise<boolean> {
     mot = this.nettoyerMot(mot);
     let ListeMotsProposables = await import("./mots/listeMotsProposables." + longueur + "." + premiereLettre);
-    return mot.length >= 6 && mot.length <= 9 && ListeMotsProposables.default.Dictionnaire.includes(mot);
+    return mot.length >= 6 && mot.length <= 10 && ListeMotsProposables.default.Dictionnaire.includes(mot);
   }
 
   public static nettoyerMot(mot: string): string {

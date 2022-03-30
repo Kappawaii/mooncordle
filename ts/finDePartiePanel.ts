@@ -16,6 +16,9 @@ export default class FinDePartiePanel {
   private _motATrouver: string = "";
   private _estVictoire: boolean = false;
   private _partieEstFinie: boolean = false;
+  private moon2WOWString: string = '<img src="images/moon2WOW.webp" alt="moon2WOW">';
+  private moon2NString: string = '<img src="images/moon2N.webp" alt="moon2N">';
+  private moon2AString: string = '<img src="images/moon2A.webp" alt="moon2A">';
 
   public constructor(datePartie: Date, panelManager: PanelManager) {
     this._datePartie = datePartie;
@@ -52,11 +55,11 @@ export default class FinDePartiePanel {
         .reduce((ligne, statut) => {
           switch (statut) {
             case LettreStatut.BienPlace:
-              return ligne + '<span class="emoji-carre-rouge">🟥</span>';
+              return ligne + this.moon2WOWString;
             case LettreStatut.MalPlace:
-              return ligne + '<span class="emoji-cercle-jaune">🟡</span>';
+              return ligne + this.moon2NString;
             default:
-              return ligne + '<span class="emoji-carre-bleu">🟦</span>';
+              return ligne + this.moon2AString;
           }
         }, "")
     );
@@ -171,9 +174,9 @@ export default class FinDePartiePanel {
         `<div class="stats-ligne"><div class="stats-cellule">Average :</div><div class="stats-cellule">${this.getMoyenne(stats.repartition)}</div></div>` +
         '<div class="stats-ligne"><div class="stats-cellule">Letters :</div>' +
         '<div class="stats-cellule">' +
-        `${stats.lettresRepartitions.bienPlace} 🟥 ` +
-        `${stats.lettresRepartitions.malPlace} 🟡 ` +
-        `${stats.lettresRepartitions.nonTrouve} 🟦` +
+        `${stats.lettresRepartitions.bienPlace} ` + this.moon2WOWString +
+        ` ${stats.lettresRepartitions.malPlace} ` + this.moon2NString +
+        ` ${stats.lettresRepartitions.nonTrouve} ` + this.moon2AString +
         "</div>" +
         "</div>" +
         "</div>";

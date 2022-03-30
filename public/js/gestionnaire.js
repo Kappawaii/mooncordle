@@ -150,7 +150,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                     }
                 });
             }); })
-                .catch(function () { return notificationMessage_1.default.ajouterNotification("Aucun mot n'a été trouvé pour aujourd'hui"); });
+                .catch(function (reason) { return notificationMessage_1.default.ajouterNotification("No word was found for today, DM Kappawaii#9448 on Discord cause he didn't do his job" + reason); });
             this.afficherReglesSiNecessaire();
         }
         Gestionnaire.prototype.getIdPartie = function (partieEnCours) {
