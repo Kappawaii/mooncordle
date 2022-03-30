@@ -23,7 +23,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
             var root = document.documentElement;
             switch (theme) {
                 case theme_1.Theme.Clair:
-                    root.style.setProperty("--couleur-bien-place", "#2904ff");
+                    root.style.setProperty("--couleur-bien-place", "#6110cc");
                     root.style.setProperty("--couleur-mal-place", "#FF7F00");
                     root.style.setProperty("--couleur-fond-rgb", "255, 254, 246");
                     root.style.setProperty("--couleur-police", "#000000");
@@ -31,7 +31,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                     root.style.setProperty("--couleur-icone", "rgb(55, 55, 55)");
                     break;
                 case theme_1.Theme.ClairAccessible:
-                    root.style.setProperty("--couleur-bien-place", "#2904ff");
+                    root.style.setProperty("--couleur-bien-place", "#6110cc");
                     root.style.setProperty("--couleur-mal-place", "#FF7F00");
                     root.style.setProperty("--couleur-fond-rgb", "255, 254, 246");
                     root.style.setProperty("--couleur-police", "#000000");
@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                     root.style.setProperty("--couleur-icone", "rgb(55, 55, 55)");
                     break;
                 case theme_1.Theme.SombreAccessible:
-                    root.style.setProperty("--couleur-bien-place", "#2904ff");
+                    root.style.setProperty("--couleur-bien-place", "#6110cc");
                     root.style.setProperty("--couleur-mal-place", "#FF7F00");
                     root.style.setProperty("--couleur-fond-rgb", "43, 43, 43");
                     root.style.setProperty("--couleur-police", "#ffffff");
@@ -47,7 +47,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                     root.style.setProperty("--couleur-icone", "rgb(200, 200, 200)");
                     break;
                 default:
-                    root.style.setProperty("--couleur-bien-place", "#2904ff");
+                    root.style.setProperty("--couleur-bien-place", "#6110cc");
                     root.style.setProperty("--couleur-mal-place", "#FF7F00");
                     root.style.setProperty("--couleur-fond-rgb", "43, 43, 43");
                     root.style.setProperty("--couleur-police", "#ffffff");

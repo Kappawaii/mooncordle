@@ -40,11 +40,11 @@ export default class FinDePartiePanel {
         .reduce((ligne, statut) => {
           switch (statut) {
             case LettreStatut.BienPlace:
-              return ligne + "moon2WOW ";
+              return ligne + ":moon2WOW: ";
             case LettreStatut.MalPlace:
-              return ligne + "moon2N ";
+              return ligne + ":moon2N: ";
             default:
-              return ligne + "moon2A ";
+              return ligne + ":moon2A: ";
           }
         }, "")
     );
@@ -111,7 +111,7 @@ export default class FinDePartiePanel {
       event.stopPropagation();
       new Promise((resolve, reject) => {
         if (window.navigator.clipboard !== undefined) {
-          return resolve(window.navigator.clipboard.writeText(this._resumeTexte + "\n\nhttp://mooncordle.jumpingcatstudios.com"));
+          return resolve(window.navigator.clipboard.writeText(this._resumeTexte + "\n\nhttps://mooncordle.jumpingcatstudios.com"));
         }
 
         return reject();
@@ -119,7 +119,7 @@ export default class FinDePartiePanel {
         .catch(
           () =>
             new Promise((resolve, reject) => {
-              if (window.navigator.share !== undefined) return resolve(navigator.share({ text: this._resumeTexte + "\n\nhttp://mooncordle.jumpingcatstudios.com/" }));
+              if (window.navigator.share !== undefined) return resolve(navigator.share({ text: this._resumeTexte + "\n\nhttps://mooncordle.jumpingcatstudios.com/" }));
 
               return reject();
             })

@@ -44,11 +44,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                     .reduce(function (ligne, statut) {
                     switch (statut) {
                         case lettreStatut_1.LettreStatut.BienPlace:
-                            return ligne + "moon2WOW ";
+                            return ligne + ":moon2WOW: ";
                         case lettreStatut_1.LettreStatut.MalPlace:
-                            return ligne + "moon2N ";
+                            return ligne + ":moon2N: ";
                         default:
-                            return ligne + "moon2A ";
+                            return ligne + ":moon2A: ";
                     }
                 }, "");
             });
@@ -106,14 +106,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                 event.stopPropagation();
                 new Promise(function (resolve, reject) {
                     if (window.navigator.clipboard !== undefined) {
-                        return resolve(window.navigator.clipboard.writeText(_this._resumeTexte + "\n\nhttp://mooncordle.jumpingcatstudios.com"));
+                        return resolve(window.navigator.clipboard.writeText(_this._resumeTexte + "\n\nhttps://mooncordle.jumpingcatstudios.com"));
                     }
                     return reject();
                 })
                     .catch(function () {
                     return new Promise(function (resolve, reject) {
                         if (window.navigator.share !== undefined)
-                            return resolve(navigator.share({ text: _this._resumeTexte + "\n\nhttp://mooncordle.jumpingcatstudios.com/" }));
+                            return resolve(navigator.share({ text: _this._resumeTexte + "\n\nhttps://mooncordle.jumpingcatstudios.com/" }));
                         return reject();
                     });
                 })
