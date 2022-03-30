@@ -126,7 +126,7 @@ export default class FinDePartiePanel {
         })
         .catch((raison) => {
           console.log(raison)
-          NotificationMessage.ajouterNotificationPanel("Your browser isn't compatible :" + raison);
+          NotificationMessage.ajouterNotificationPanel("Your browser isn't compatible2 :" + raison);
         });
     });
   }

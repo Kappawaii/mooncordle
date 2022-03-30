@@ -118,7 +118,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                 })
                     .catch(function (raison) {
                     console.log(raison);
-                    notificationMessage_1.default.ajouterNotificationPanel("Your browser isn't compatible :" + raison);
+                    notificationMessage_1.default.ajouterNotificationPanel("Your browser isn't compatible2 :" + raison);
                 });
             });
         };
