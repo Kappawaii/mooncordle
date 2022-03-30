@@ -135,7 +135,7 @@ export default class FinDePartiePanel {
     let contenu: string = "";
 
     if (!this._partieEstFinie) {
-      titre = "Statistiques";
+      titre = "Statistics";
       contenu += '<p class="fin-de-partie-panel-phrase">You haven\'t finished your game for the day yet.</p>';
     } else {
       if (this._estVictoire) {

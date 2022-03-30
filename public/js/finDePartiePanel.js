@@ -126,7 +126,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
             var titre;
             var contenu = "";
             if (!this._partieEstFinie) {
-                titre = "Statistiques";
+                titre = "Statistics";
                 contenu += '<p class="fin-de-partie-panel-phrase">You haven\'t finished your game for the day yet.</p>';
             }
             else {
