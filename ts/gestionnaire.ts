@@ -45,10 +45,12 @@ export default class Gestionnaire {
     this._idPartieEnCours = this.getIdPartie(partieEnCours);
 
     if (this._idPartieEnCours !== partieEnCours.idPartie && partieEnCours.idPartie !== undefined) {
+      console.log("bad partie");
       partieEnCours = new PartieEnCours();
     }
 
     if (partieEnCours.datePartie) {
+      console.log("hi2");
       this._datePartieEnCours = partieEnCours.datePartie;
     } else {
       this._datePartieEnCours = new Date();
@@ -101,7 +103,6 @@ export default class Gestionnaire {
 
   private chargerPartieEnCours(): PartieEnCours {
     this._stats = Sauvegardeur.chargerSauvegardeStats() ?? SauvegardeStats.Default;
-
     let sauvegardePartieEnCours = Sauvegardeur.chargerSauvegardePartieEnCours();
     if (sauvegardePartieEnCours) return sauvegardePartieEnCours;
 
@@ -111,7 +112,7 @@ export default class Gestionnaire {
   private async chargerPropositions(propositions: Array<string> | undefined): Promise<void> {
     if (!propositions || propositions.length === 0) return;
     for (let mot of propositions) {
-      //await this.verifierMot(mot, true);
+      await this.verifierMot(mot, true);
     }
   }
 

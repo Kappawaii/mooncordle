@@ -4,7 +4,7 @@ import SauvegardePartie from "./entites/sauvegardePartie";
 import SauvegardeStats from "./entites/sauvegardeStats";
 
 export default class Sauvegardeur {
-  private static readonly _cleStats = "statistiques";
+  private static readonly _cleStats = " ";
   private static readonly _clePartieEnCours = "partieEnCours";
   private static readonly _cleConfiguration = "configuration";
 
@@ -46,7 +46,7 @@ export default class Sauvegardeur {
       return;
     }
     let dateFinPartie = partieEnCours.dateFinPartie === undefined ? undefined : new Date(partieEnCours.dateFinPartie);
-
+    console.log(partieEnCours.propositions);
     return {
       datePartie: datePartieEnCours,
       dateFinPartie: dateFinPartie,

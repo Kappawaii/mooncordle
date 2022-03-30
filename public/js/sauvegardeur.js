@@ -45,6 +45,7 @@
                 return;
             }
             var dateFinPartie = partieEnCours.dateFinPartie === undefined ? undefined : new Date(partieEnCours.dateFinPartie);
+            console.log(partieEnCours.propositions);
             return {
                 datePartie: datePartieEnCours,
                 dateFinPartie: dateFinPartie,
@@ -62,7 +63,7 @@
             var config = JSON.parse(dataConfig);
             return config;
         };
-        Sauvegardeur._cleStats = "statistiques";
+        Sauvegardeur._cleStats = " ";
         Sauvegardeur._clePartieEnCours = "partieEnCours";
         Sauvegardeur._cleConfiguration = "configuration";
         return Sauvegardeur;

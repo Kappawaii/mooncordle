@@ -114,9 +114,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
             var partieEnCours = this.chargerPartieEnCours();
             this._idPartieEnCours = this.getIdPartie(partieEnCours);
             if (this._idPartieEnCours !== partieEnCours.idPartie && partieEnCours.idPartie !== undefined) {
+                console.log("bad partie");
                 partieEnCours = new partieEnCours_1.default();
             }
             if (partieEnCours.datePartie) {
+                console.log("hi2");
                 this._datePartieEnCours = partieEnCours.datePartie;
             }
             else {
@@ -183,13 +185,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
             return __awaiter(this, void 0, void 0, function () {
                 var _i, propositions_1, mot;
                 return __generator(this, function (_a) {
-                    if (!propositions || propositions.length === 0)
-                        return [2 /*return*/];
-                    for (_i = 0, propositions_1 = propositions; _i < propositions_1.length; _i++) {
-                        mot = propositions_1[_i];
-                        //await this.verifierMot(mot, true);
+                    switch (_a.label) {
+                        case 0:
+                            if (!propositions || propositions.length === 0)
+                                return [2 /*return*/];
+                            _i = 0, propositions_1 = propositions;
+                            _a.label = 1;
+                        case 1:
+                            if (!(_i < propositions_1.length)) return [3 /*break*/, 4];
+                            mot = propositions_1[_i];
+                            return [4 /*yield*/, this.verifierMot(mot, true)];
+                        case 2:
+                            _a.sent();
+                            _a.label = 3;
+                        case 3:
+                            _i++;
+                            return [3 /*break*/, 1];
+                        case 4: return [2 /*return*/];
                     }
-                    return [2 /*return*/];
                 });
             });
         };
