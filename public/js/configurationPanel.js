@@ -42,7 +42,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
         ConfigurationPanel.prototype.afficher = function () {
             var _this = this;
             var _a, _b, _c, _d;
-            console.log("oui");
             var titre = "Configuration";
             var contenu = document.createElement("div");
             var config = (_a = sauvegardeur_1.default.chargerConfig()) !== null && _a !== void 0 ? _a : configuration_1.default.Default;

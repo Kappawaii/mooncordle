@@ -33,7 +33,6 @@ export default class ConfigurationPanel {
   }
 
   public afficher(): void {
-    console.log("oui");
     let titre = "Configuration";
     let contenu = document.createElement("div");
     let config = Sauvegardeur.chargerConfig() ?? Configuration.Default;
