@@ -102,23 +102,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                 event.stopPropagation();
                 new Promise(function (resolve, reject) {
                     if (window.navigator.clipboard !== undefined) {
-                        return resolve(window.navigator.clipboard.writeText(_this._resumeTexte + "\n\nhttps://sutom.nocle.fr"));
+                        return resolve(window.navigator.clipboard.writeText(_this._resumeTexte + "\n\nhttp://mooncordle.jumpingcatstudios.com"));
                     }
                     return reject();
                 })
                     .catch(function () {
                     return new Promise(function (resolve, reject) {
                         if (window.navigator.share !== undefined)
-                            return resolve(navigator.share({ text: _this._resumeTexte + "\n\nhttps://sutom.nocle.fr" }));
+                            return resolve(navigator.share({ text: _this._resumeTexte + "\n\nhttp://mooncordle.jumpingcatstudios.com/" }));
                         return reject();
                     });
                 })
                     .then(function () {
                     notificationMessage_1.default.ajouterNotificationPanel("Summary copied in clipboard");
-                })
-                    .catch(function (raison) {
-                    console.log(raison);
-                    notificationMessage_1.default.ajouterNotificationPanel("Your browser isn't compatible2 :" + raison);
                 });
             });
         };
