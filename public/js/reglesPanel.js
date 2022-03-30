@@ -60,7 +60,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                 "</div>" +
                 "<p>" +
                 'If you experience any issues, please contact Kappawaii#9448 on discord. − ' +
-                '<a target="_blank" href="https://framagit.org/JonathanMM/sutom">Repository Page</a><br />' +
+                '<a target="_blank" href="https://github.com/Kappawaii/mooncordle">Repository Page</a><br />' +
                 'Based on the wordle clone by <a href="https://twitter.com/Jonamaths">@Jonamaths</a> (his repo is <a target="_blank" href="https://framagit.org/JonathanMM/sutom">here</a>) <br />' +
                 'Thanks to Pseudo#6900 for the playtesting help ❤️';
             "</p>";
