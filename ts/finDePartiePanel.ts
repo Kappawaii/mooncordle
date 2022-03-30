@@ -37,11 +37,11 @@ export default class FinDePartiePanel {
         .reduce((ligne, statut) => {
           switch (statut) {
             case LettreStatut.BienPlace:
-              return ligne + "🟥";
+              return ligne + "moon2WOW ";
             case LettreStatut.MalPlace:
-              return ligne + "🟡";
+              return ligne + "moon2N ";
             default:
-              return ligne + "🟦";
+              return ligne + "moon2A ";
           }
         }, "")
     );

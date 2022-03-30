@@ -19,32 +19,35 @@ export default class ReglesPanel {
   }
 
   public afficher(): void {
-    let titre = "Règles";
+    let titre = "Rules";
     let contenu =
       "<p>" +
-      "Vous avez six essais pour deviner le mot du jour, entre 6 et 9 lettres, commun à tous.<br />" +
-      "Vous ne pouvez proposer que des mots commençant par la même lettre que le mot recherché, et qui se trouvent dans notre dictionnaire.<br />" +
-      "Le mot change chaque jour. Évitez donc les spoils et privilégiez le bouton de partage.<br />" +
+      "You have six tries to guess the word of the day, between 6 and 9 letters <br />" +
+      "You can only suggest words starting with the same letter as the searched word <br />" +
+      "The word changes every day. So avoid spoilers and use the share button <br />" +
       "</p>" +
       '<div class="grille">' +
       "<table>" +
       "<tr>" +
-      '<td class="resultat bien-place">S</td>' +
-      '<td class="resultat non-trouve">A</td>' +
-      '<td class="resultat non-trouve">L</td>' +
-      '<td class="resultat mal-place">U</td>' +
-      '<td class="resultat mal-place">T</td>' +
+      '<td class="resultat bien-place">M</td>' +
+      '<td class="resultat  mal-place">O</td>' +
+      '<td class="resultat non-trouve">O</td>' +
+      '<td class="resultat mal-place">N</td>' +
+      '<td class="resultat mal-place">M</td>' +
+      '<td class="resultat non-trouve">O</td>' +
+      '<td class="resultat bien-place">O</td>' +
+      '<td class="resultat bien-place">N</td>' +
       "</tr>" +
       "</table>" +
-      "Les lettres entourées d'un carré rouge sont bien placées,<br />" +
-      "les lettres entourées d'un cercle jaune sont mal placées (mais présentes dans le mot).<br />" +
-      "Les lettres qui restent sur fond bleu ne sont pas dans le mot.<br />" +
+      "The letters surrounded by a purple square are well placed<br />" +
+      "The letters surrounded by an orange square are misplaced (but present in the word) <br />" +
+      "The letters that remain on a dark background are not in the word <br />" +
       "</div>" +
       "<p>" +
-      'En cas de soucis, vous pouvez contacter <a href="https://twitter.com/Jonamaths">@Jonamaths</a> sur twitter. −' +
-      '<a target="_blank" href="https://framagit.org/JonathanMM/sutom">Page du projet</a><br />' +
-      'Basé sur l\'excellent <a target="_blank" href="https://www.powerlanguage.co.uk/wordle/">Wordle</a> et le regretté Motus.<br />' +
-      "Merci à Emmanuel pour l'aide sur les mots à trouver, et à GaranceAmarante pour l'aide sur le dictionnaire." +
+      'If you experience any issues, please contact Kappawaii#9448 on discord. − ' +
+      '<a target="_blank" href="https://framagit.org/JonathanMM/sutom">Repository Page</a><br />' +
+      'Based on the wordle clone by <a href="https://twitter.com/Jonamaths">@Jonamaths</a> (his repo is <a target="_blank" href="https://framagit.org/JonathanMM/sutom">here</a>) <br />' +
+      'Thanks to Pseudo#6900 for the playtesting help ❤️'
       "</p>";
 
     this._panelManager.setContenu(titre, contenu);

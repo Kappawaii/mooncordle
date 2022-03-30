@@ -40,11 +40,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                     .reduce(function (ligne, statut) {
                     switch (statut) {
                         case lettreStatut_1.LettreStatut.BienPlace:
-                            return ligne + "🟥";
+                            return ligne + "moon2WOW ";
                         case lettreStatut_1.LettreStatut.MalPlace:
-                            return ligne + "🟡";
+                            return ligne + "moon2N ";
                         default:
-                            return ligne + "🟦";
+                            return ligne + "moon2A ";
                     }
                 }, "");
             });

@@ -256,6 +256,6 @@ export default class Gestionnaire {
   private afficherReglesSiNecessaire(): void {
     if (this._config.afficherRegles !== undefined && !this._config.afficherRegles) return;
 
-    // this._reglesPanel.afficher();
+     this._reglesPanel.afficher();
   }
 }

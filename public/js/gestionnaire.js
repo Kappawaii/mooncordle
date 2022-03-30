@@ -336,7 +336,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
         Gestionnaire.prototype.afficherReglesSiNecessaire = function () {
             if (this._config.afficherRegles !== undefined && !this._config.afficherRegles)
                 return;
-            // this._reglesPanel.afficher();
+            this._reglesPanel.afficher();
         };
         return Gestionnaire;
     }());
