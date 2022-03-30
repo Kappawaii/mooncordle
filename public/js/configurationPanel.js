@@ -18,13 +18,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "./entites/configuration", "./sauvegardeur", "./entites/clavierDisposition", "./entites/theme"], factory);
+        define(["require", "exports", "./entites/configuration", "./sauvegardeur", "./entites/volumeSon", "./entites/clavierDisposition", "./entites/theme"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var configuration_1 = __importDefault(require("./entites/configuration"));
     var sauvegardeur_1 = __importDefault(require("./sauvegardeur"));
+    var volumeSon_1 = require("./entites/volumeSon");
     var clavierDisposition_1 = require("./entites/clavierDisposition");
     var theme_1 = require("./entites/theme");
     var ConfigurationPanel = /** @class */ (function () {
@@ -44,12 +45,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
             var titre = "Configuration";
             var contenu = document.createElement("div");
             var config = (_a = sauvegardeur_1.default.chargerConfig()) !== null && _a !== void 0 ? _a : configuration_1.default.Default;
-            contenu.appendChild(this.genererConfigItem("Disposition du clavier", [
+            contenu.appendChild(this.genererConfigItem("Sound Volume (if enabled)", [
+                { value: volumeSon_1.VolumeSon.Faible.toString(), label: "Low" },
+                { value: volumeSon_1.VolumeSon.Normal.toString(), label: "Medium" },
+                { value: volumeSon_1.VolumeSon.Fort.toString(), label: "Loud" },
+            ], ((_b = config.volumeSon) !== null && _b !== void 0 ? _b : configuration_1.default.Default.volumeSon).toString(), function (event) {
+                var _a;
+                event.stopPropagation();
+                var volumeSon = parseInt(event.target.value);
+                _this._audioPanel.setVolumeSonore(volumeSon);
+                sauvegardeur_1.default.sauvegarderConfig(__assign(__assign({}, ((_a = sauvegardeur_1.default.chargerConfig()) !== null && _a !== void 0 ? _a : configuration_1.default.Default)), { volumeSon: volumeSon }));
+            }));
+            contenu.appendChild(this.genererConfigItem("Keyboard Layout", [
+                { value: clavierDisposition_1.ClavierDisposition.Qwerty.toString(), label: "QWERTY" },
                 { value: clavierDisposition_1.ClavierDisposition.Azerty.toString(), label: "AZERTY" },
                 { value: clavierDisposition_1.ClavierDisposition.Bépo.toString(), label: "BÉPO" },
-                { value: clavierDisposition_1.ClavierDisposition.Qwerty.toString(), label: "QWERTY" },
                 { value: clavierDisposition_1.ClavierDisposition.Qwertz.toString(), label: "QWERTZ" },
-            ], ((_b = config.disposition) !== null && _b !== void 0 ? _b : configuration_1.default.Default.disposition).toString(), function (event) {
+            ], ((_c = config.disposition) !== null && _c !== void 0 ? _c : configuration_1.default.Default.disposition).toString(), function (event) {
                 var _a;
                 event.stopPropagation();
                 var disposition = parseInt(event.target.value);
@@ -57,26 +69,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                     _this._input.dessinerClavier(disposition);
                 sauvegardeur_1.default.sauvegarderConfig(__assign(__assign({}, ((_a = sauvegardeur_1.default.chargerConfig()) !== null && _a !== void 0 ? _a : configuration_1.default.Default)), { disposition: disposition }));
             }));
-            contenu.appendChild(this.genererConfigItem("Thème", [
-                { value: theme_1.Theme.Sombre.toString(), label: "Sombre" },
-                { value: theme_1.Theme.Clair.toString(), label: "Clair" },
-                { value: theme_1.Theme.SombreAccessible.toString(), label: "Sombre (Accessible)" },
-                { value: theme_1.Theme.ClairAccessible.toString(), label: "Clair (Accessible)" },
-            ], ((_c = config.theme) !== null && _c !== void 0 ? _c : configuration_1.default.Default.theme).toString(), function (event) {
+            contenu.appendChild(this.genererConfigItem("Theme", [
+                { value: theme_1.Theme.Sombre.toString(), label: "Dark" },
+                { value: theme_1.Theme.Clair.toString(), label: "Light" },
+                { value: theme_1.Theme.SombreAccessible.toString(), label: "Dark (Accessible)" },
+                { value: theme_1.Theme.ClairAccessible.toString(), label: "Light (Accessible)" },
+            ], ((_d = config.theme) !== null && _d !== void 0 ? _d : configuration_1.default.Default.theme).toString(), function (event) {
                 var _a;
                 event.stopPropagation();
                 var theme = parseInt(event.target.value);
                 _this._themeManager.changerCouleur(theme);
                 sauvegardeur_1.default.sauvegarderConfig(__assign(__assign({}, ((_a = sauvegardeur_1.default.chargerConfig()) !== null && _a !== void 0 ? _a : configuration_1.default.Default)), { theme: theme }));
-            }));
-            contenu.appendChild(this.genererConfigItem("Afficher le temps sur le résumé (à la prochaine partie)", [
-                { value: false.toString(), label: "Non" },
-                { value: true.toString(), label: "Oui" },
-            ], ((_d = config.afficherChrono) !== null && _d !== void 0 ? _d : configuration_1.default.Default.afficherChrono).toString(), function (event) {
-                var _a;
-                event.stopPropagation();
-                var afficherChrono = event.target.value === true.toString();
-                sauvegardeur_1.default.sauvegarderConfig(__assign(__assign({}, ((_a = sauvegardeur_1.default.chargerConfig()) !== null && _a !== void 0 ? _a : configuration_1.default.Default)), { afficherChrono: afficherChrono }));
             }));
             this._panelManager.setContenuHtmlElement(titre, contenu);
             this._panelManager.setClasses(["config-panel"]);

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mooncordle</title>
     <script data-main="js/main" type="text/javascript" src="node_modules/requirejs/require.js"></script>
+    <script data-main="js/main" type="text/javascript" src="node_modules/requirejs/require.js"></script>
     <link rel="stylesheet" href="jeu.css" type="text/css" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -57,12 +58,12 @@
           <div id="panel-fenetre-contenu"></div>
         </div>
       </div>
-      <div id="grille" class="grille">Chargement de la grille en cours…</div>
+      <div id="grille" class="grille">Loading current game...</div>
       <div id="input-area"></div>
       <div style="display: none">
         <audio preload src="sons/lettre-non-trouve.wav" id="son-lettre-non-trouve"></audio>
         <audio preload src="sons/lettre-mal-place.wav" id="son-lettre-mal-place"></audio>
-        <audio preload src="sons/lettre-bien-place.wav" id="son-lettre-bien-place"></audio>
+        <audio preload src="sons/wow3.mp3" id="son-lettre-bien-place"></audio>
 
         <svg>
           <symbol id="icone-son-active" viewBox="0 0 32 32">
@@ -163,7 +164,7 @@
         </svg>
       </div>
     </div>
-    <script type="text/javascript" src="https://requirejs.org/docs/release/2.3.6/minified/require.js">
+    <script type="text/javascript">
       requirejs.config({
         waitSeconds: 20,
       });

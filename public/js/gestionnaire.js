@@ -77,7 +77,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "./dictionnaire", "./grille", "./input", "./entites/lettreResultat", "./entites/lettreStatut", "./finDePartiePanel", "./notificationMessage", "./entites/sauvegardeStats", "./sauvegardeur", "./entites/configuration", "./entites/partieEnCours", "./panelManager", "./reglesPanel", "./audioPanel", "./themeManager", "./instanceConfiguration"], factory);
+        define(["require", "exports", "./dictionnaire", "./grille", "./input", "./entites/lettreResultat", "./entites/lettreStatut", "./finDePartiePanel", "./notificationMessage", "./entites/sauvegardeStats", "./sauvegardeur", "./entites/configuration", "./audioPanel", "./configurationPanel", "./entites/partieEnCours", "./panelManager", "./reglesPanel", "./themeManager", "./instanceConfiguration"], factory);
     }
 })(function (require, exports) {
     "use strict";
@@ -92,10 +92,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     var sauvegardeStats_1 = __importDefault(require("./entites/sauvegardeStats"));
     var sauvegardeur_1 = __importDefault(require("./sauvegardeur"));
     var configuration_1 = __importDefault(require("./entites/configuration"));
+    var audioPanel_1 = __importDefault(require("./audioPanel"));
+    var configurationPanel_1 = __importDefault(require("./configurationPanel"));
     var partieEnCours_1 = __importDefault(require("./entites/partieEnCours"));
     var panelManager_1 = __importDefault(require("./panelManager"));
     var reglesPanel_1 = __importDefault(require("./reglesPanel"));
-    var audioPanel_1 = __importDefault(require("./audioPanel"));
     var themeManager_1 = __importDefault(require("./themeManager"));
     var instanceConfiguration_1 = __importDefault(require("./instanceConfiguration"));
     var Gestionnaire = /** @class */ (function () {
@@ -126,11 +127,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
             }
             this._propositions = new Array();
             this._resultats = new Array();
-            this._audioPanel = new audioPanel_1.default(this._config);
             this._panelManager = new panelManager_1.default();
+            this._audioPanel = new audioPanel_1.default(this._config);
             this._themeManager = new themeManager_1.default(this._config);
             this._reglesPanel = new reglesPanel_1.default(this._panelManager);
             this._finDePartiePanel = new finDePartiePanel_1.default(this._datePartieEnCours, this._panelManager);
+            this._configurationPanel = new configurationPanel_1.default(this._panelManager, this._audioPanel, this._themeManager);
             this.choisirMot(this._idPartieEnCours, this._datePartieEnCours)
                 .then(function (mot) { return __awaiter(_this, void 0, void 0, function () {
                 return __generator(this, function (_a) {

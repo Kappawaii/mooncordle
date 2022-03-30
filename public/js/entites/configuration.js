@@ -18,7 +18,7 @@
             this.afficherRegles = true;
             this.afficherChrono = false;
             this.volumeSon = volumeSon_1.VolumeSon.Normal;
-            this.disposition = clavierDisposition_1.ClavierDisposition.Azerty;
+            this.disposition = clavierDisposition_1.ClavierDisposition.Qwerty;
             this.theme = theme_1.Theme.Sombre;
         }
         Configuration.Default = {
@@ -26,7 +26,7 @@
             afficherRegles: true,
             afficherChrono: false,
             volumeSon: volumeSon_1.VolumeSon.Normal,
-            disposition: clavierDisposition_1.ClavierDisposition.Azerty,
+            disposition: clavierDisposition_1.ClavierDisposition.Qwerty,
             theme: theme_1.Theme.Sombre,
         };
         return Configuration;

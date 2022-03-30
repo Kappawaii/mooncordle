@@ -8,10 +8,11 @@ import NotificationMessage from "./notificationMessage";
 import SauvegardeStats from "./entites/sauvegardeStats";
 import Sauvegardeur from "./sauvegardeur";
 import Configuration from "./entites/configuration";
+import AudioPanel from "./audioPanel";
+import ConfigurationPanel from "./configurationPanel";
 import PartieEnCours from "./entites/partieEnCours";
 import PanelManager from "./panelManager";
 import ReglesPanel from "./reglesPanel";
-import AudioPanel from "./audioPanel";
 import ThemeManager from "./themeManager";
 import InstanceConfiguration from "./instanceConfiguration";
 
@@ -20,6 +21,7 @@ export default class Gestionnaire {
   private _input: Input | null = null;
   private readonly _reglesPanel: ReglesPanel;
   private readonly _finDePartiePanel: FinDePartiePanel;
+  private readonly _configurationPanel: ConfigurationPanel;
   private readonly _propositions: Array<string>;
   private readonly _resultats: Array<Array<LettreResultat>>;
   private readonly _panelManager: PanelManager;
@@ -57,11 +59,12 @@ export default class Gestionnaire {
     }
     this._propositions = new Array<string>();
     this._resultats = new Array<Array<LettreResultat>>();
-    this._audioPanel = new AudioPanel(this._config);
     this._panelManager = new PanelManager();
+    this._audioPanel = new AudioPanel(this._config);
     this._themeManager = new ThemeManager(this._config);
     this._reglesPanel = new ReglesPanel(this._panelManager);
     this._finDePartiePanel = new FinDePartiePanel(this._datePartieEnCours, this._panelManager);
+    this._configurationPanel = new ConfigurationPanel(this._panelManager, this._audioPanel, this._themeManager);
     this.choisirMot(this._idPartieEnCours, this._datePartieEnCours)
       .then(async (mot) => {
         this._motATrouver = mot;

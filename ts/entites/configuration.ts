@@ -8,7 +8,7 @@ export default class Configuration {
     afficherRegles: true,
     afficherChrono: false,
     volumeSon: VolumeSon.Normal,
-    disposition: ClavierDisposition.Azerty,
+    disposition: ClavierDisposition.Qwerty,
     theme: Theme.Sombre,
   };
 
@@ -16,6 +16,6 @@ export default class Configuration {
   afficherRegles: boolean = true;
   afficherChrono: boolean = false;
   volumeSon: VolumeSon = VolumeSon.Normal;
-  disposition: ClavierDisposition = ClavierDisposition.Azerty;
+  disposition: ClavierDisposition = ClavierDisposition.Qwerty;
   theme: Theme = Theme.Sombre;
 }

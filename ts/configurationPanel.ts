@@ -36,21 +36,42 @@ export default class ConfigurationPanel {
     let titre = "Configuration";
     let contenu = document.createElement("div");
     let config = Sauvegardeur.chargerConfig() ?? Configuration.Default;
+    contenu.appendChild(
+      this.genererConfigItem(
+        "Sound Volume (if enabled)",
+        [
+          { value: VolumeSon.Faible.toString(), label: "Low" },
+          { value: VolumeSon.Normal.toString(), label: "Medium" },
+          { value: VolumeSon.Fort.toString(), label: "Loud" },
+        ],
+        (config.volumeSon ?? Configuration.Default.volumeSon).toString(),
+        (event: Event) => {
+          event.stopPropagation();
+          let volumeSon: VolumeSon = parseInt((event.target as HTMLSelectElement).value);
+
+          this._audioPanel.setVolumeSonore(volumeSon);
+
+          Sauvegardeur.sauvegarderConfig({
+            ...(Sauvegardeur.chargerConfig() ?? Configuration.Default),
+            volumeSon,
+          });
+        }
+      )
+    );
 
     contenu.appendChild(
       this.genererConfigItem(
-        "Disposition du clavier",
+        "Keyboard Layout",
         [
+          { value: ClavierDisposition.Qwerty.toString(), label: "QWERTY" },
           { value: ClavierDisposition.Azerty.toString(), label: "AZERTY" },
           { value: ClavierDisposition.Bépo.toString(), label: "BÉPO" },
-          { value: ClavierDisposition.Qwerty.toString(), label: "QWERTY" },
           { value: ClavierDisposition.Qwertz.toString(), label: "QWERTZ" },
         ],
         (config.disposition ?? Configuration.Default.disposition).toString(),
         (event: Event) => {
           event.stopPropagation();
           let disposition: ClavierDisposition = parseInt((event.target as HTMLSelectElement).value);
-
           if (this._input) this._input.dessinerClavier(disposition);
 
           Sauvegardeur.sauvegarderConfig({
@@ -63,12 +84,12 @@ export default class ConfigurationPanel {
 
     contenu.appendChild(
       this.genererConfigItem(
-        "Thème",
+        "Theme",
         [
-          { value: Theme.Sombre.toString(), label: "Sombre" },
-          { value: Theme.Clair.toString(), label: "Clair" },
-          { value: Theme.SombreAccessible.toString(), label: "Sombre (Accessible)" },
-          { value: Theme.ClairAccessible.toString(), label: "Clair (Accessible)" },
+          { value: Theme.Sombre.toString(), label: "Dark" },
+          { value: Theme.Clair.toString(), label: "Light" },
+          { value: Theme.SombreAccessible.toString(), label: "Dark (Accessible)" },
+          { value: Theme.ClairAccessible.toString(), label: "Light (Accessible)" },
         ],
         (config.theme ?? Configuration.Default.theme).toString(),
         (event: Event) => {
@@ -80,26 +101,6 @@ export default class ConfigurationPanel {
           Sauvegardeur.sauvegarderConfig({
             ...(Sauvegardeur.chargerConfig() ?? Configuration.Default),
             theme,
-          });
-        }
-      )
-    );
-
-    contenu.appendChild(
-      this.genererConfigItem(
-        "Afficher le temps sur le résumé (à la prochaine partie)",
-        [
-          { value: false.toString(), label: "Non" },
-          { value: true.toString(), label: "Oui" },
-        ],
-        (config.afficherChrono ?? Configuration.Default.afficherChrono).toString(),
-        (event: Event) => {
-          event.stopPropagation();
-          let afficherChrono = (event.target as HTMLSelectElement).value === true.toString();
-
-          Sauvegardeur.sauvegarderConfig({
-            ...(Sauvegardeur.chargerConfig() ?? Configuration.Default),
-            afficherChrono,
           });
         }
       )
