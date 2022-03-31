@@ -262,11 +262,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                 var _this = this;
                 return __generator(this, function (_a) {
                     mot = dictionnaire_1.default.nettoyerMot(mot);
-                    if (mot.length !== this._motATrouver.length) {
+                    if (!chargementPartie && mot.length !== this._motATrouver.length) {
                         notificationMessage_1.default.ajouterNotification("The suggested word is too short");
                         return [2 /*return*/, false];
                     }
-                    if (mot[0] !== this._motATrouver[0]) {
+                    if (!chargementPartie && mot[0] !== this._motATrouver[0]) {
                         notificationMessage_1.default.ajouterNotification("The proposed word must begin with the same letter as the searched word");
                         return [2 /*return*/, false];
                     }

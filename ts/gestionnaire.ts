@@ -165,11 +165,11 @@ export default class Gestionnaire {
 
   public async verifierMot(mot: string, chargementPartie: boolean = false): Promise<boolean> {
     mot = Dictionnaire.nettoyerMot(mot);
-    if (mot.length !== this._motATrouver.length) {
+    if (!chargementPartie && mot.length !== this._motATrouver.length) {
       NotificationMessage.ajouterNotification("The suggested word is too short");
       return false;
     }
-    if (mot[0] !== this._motATrouver[0]) {
+    if (!chargementPartie && mot[0] !== this._motATrouver[0]) {
       NotificationMessage.ajouterNotification("The proposed word must begin with the same letter as the searched word");
       return false;
     }

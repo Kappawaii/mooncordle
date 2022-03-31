@@ -140,7 +140,7 @@ export default class FinDePartiePanel {
     } else {
       if (this._estVictoire) {
         titre = "Congratulations";
-        contenu += '<p class="fin-de-partie-panel-phrase">Well done you won. Thanks for playing :)</p>';
+        contenu += '<p class="fin-de-partie-panel-phrase">Well done you won. Thanks for playing :) <br/>(Clear your cookies if statistics don\'t show)</p>';
       } else {
         titre = "You lost lol";
         contenu +=
