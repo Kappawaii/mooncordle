@@ -23,3 +23,5 @@ gamedev
 moonjam
 stonks
 starwars
+goodeats
+vigor
