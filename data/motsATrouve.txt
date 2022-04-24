@@ -25,3 +25,6 @@ stonks
 starwars
 goodeats
 vigor
+yungdab
+copege
+hackermans
