@@ -14,7 +14,7 @@
             this._panelManager = panelManager;
         }
         FinDuJeuPanel.prototype.afficher = function () {
-            var titre = "End of mooncordle";
+            var titre = "End of MOONCORDLE";
             var contenu = "<p>" +
                 "Mooncordle has finally run its course, the last word has been added and will stay available for the time being." +
                 "<br /><br />" +
