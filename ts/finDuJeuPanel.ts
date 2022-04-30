@@ -8,7 +8,7 @@ export default class FinDuJeuPanel {
   }
 
   public afficher(): void {
-    let titre = "End of MOONCORDLE";
+    let titre = "End of no";
     let contenu =
       "<p>" +
       "Mooncordle has finally run its course, the last word has been added and will stay available for the time being." +
