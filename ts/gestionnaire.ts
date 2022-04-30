@@ -15,6 +15,7 @@ import PanelManager from "./panelManager";
 import ReglesPanel from "./reglesPanel";
 import ThemeManager from "./themeManager";
 import InstanceConfiguration from "./instanceConfiguration";
+import FinDuJeuPanel from "./finDuJeuPanel";
 
 export default class Gestionnaire {
   private _grille: Grille | null = null;
@@ -63,27 +64,26 @@ export default class Gestionnaire {
     this._resultats = new Array<Array<LettreResultat>>();
     this._panelManager = new PanelManager();
     this._audioPanel = new AudioPanel(this._config);
+    let finDuJeuPanel = new FinDuJeuPanel(this._panelManager);
+    finDuJeuPanel.afficher();
+
     this._themeManager = new ThemeManager(this._config);
     this._reglesPanel = new ReglesPanel(this._panelManager);
     this._finDePartiePanel = new FinDePartiePanel(this._datePartieEnCours, this._panelManager);
     this._configurationPanel = new ConfigurationPanel(this._panelManager, this._audioPanel, this._themeManager);
-    this.choisirMot(this._idPartieEnCours, this._datePartieEnCours)
-      .then(async (mot) => {
-        this._motATrouver = mot;
-        this._input = new Input(this, this._config, this._motATrouver.length, this._motATrouver[0]);
-        this._panelManager.setInput(this._input);
-        this._grille = new Grille(this._motATrouver.length, this._maxNbPropositions, this._motATrouver[0], this._audioPanel);
-        this._compositionMotATrouver = this.decompose(this._motATrouver);
-        await this.chargerPropositions(partieEnCours.propositions);
-      })
-      .catch((reason) => NotificationMessage.ajouterNotification("No word was found for today, DM Kappawaii#9448 on Discord cause he didn't do his job" +reason));
+    this._motATrouver = "BEDGE";
+    this._input = new Input(this, this._config, this._motATrouver.length, this._motATrouver[0]);
+    this._panelManager.setInput(this._input);
+    this._grille = new Grille(this._motATrouver.length, this._maxNbPropositions, this._motATrouver[0], this._audioPanel);
+    this._compositionMotATrouver = this.decompose(this._motATrouver);
+    this.chargerPropositions(partieEnCours.propositions);
 
     this.afficherReglesSiNecessaire();
   }
 
   private getIdPartie(partieEnCours: PartieEnCours) {
     if (window.location.hash !== "" && window.location.hash !== "#") {
-      let hashPart = Buffer.from(window.location.hash.substring(1),'base64').toString().split("/");
+      let hashPart = Buffer.from(window.location.hash.substring(1), 'base64').toString().split("/");
       for (let infoPos in hashPart) {
         let info = hashPart[infoPos];
         if (!info.includes("=")) continue;
@@ -147,10 +147,6 @@ export default class Gestionnaire {
 
   private sauvegarderPartieEnCours(): void {
     Sauvegardeur.sauvegarderPartieEnCours(this._idPartieEnCours, this._datePartieEnCours, this._propositions, this._dateFinPartie);
-  }
-
-  private async choisirMot(idPartie: string, datePartie: Date): Promise<string> {
-    return Dictionnaire.getMot(idPartie, datePartie);
   }
 
   private decompose(mot: string): { [lettre: string]: number } {
@@ -257,6 +253,6 @@ export default class Gestionnaire {
   private afficherReglesSiNecessaire(): void {
     if (this._config.afficherRegles !== undefined && !this._config.afficherRegles) return;
 
-     this._reglesPanel.afficher();
+    //this._reglesPanel.afficher();
   }
 }

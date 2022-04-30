@@ -77,7 +77,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "./dictionnaire", "./grille", "./input", "./entites/lettreResultat", "./entites/lettreStatut", "./finDePartiePanel", "./notificationMessage", "./entites/sauvegardeStats", "./sauvegardeur", "./entites/configuration", "./audioPanel", "./configurationPanel", "./entites/partieEnCours", "./panelManager", "./reglesPanel", "./themeManager", "./instanceConfiguration"], factory);
+        define(["require", "exports", "./dictionnaire", "./grille", "./input", "./entites/lettreResultat", "./entites/lettreStatut", "./finDePartiePanel", "./notificationMessage", "./entites/sauvegardeStats", "./sauvegardeur", "./entites/configuration", "./audioPanel", "./configurationPanel", "./entites/partieEnCours", "./panelManager", "./reglesPanel", "./themeManager", "./instanceConfiguration", "./finDuJeuPanel"], factory);
     }
 })(function (require, exports) {
     "use strict";
@@ -99,9 +99,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     var reglesPanel_1 = __importDefault(require("./reglesPanel"));
     var themeManager_1 = __importDefault(require("./themeManager"));
     var instanceConfiguration_1 = __importDefault(require("./instanceConfiguration"));
+    var finDuJeuPanel_1 = __importDefault(require("./finDuJeuPanel"));
     var Gestionnaire = /** @class */ (function () {
         function Gestionnaire() {
-            var _this = this;
             var _a;
             this._grille = null;
             this._input = null;
@@ -131,28 +131,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
             this._resultats = new Array();
             this._panelManager = new panelManager_1.default();
             this._audioPanel = new audioPanel_1.default(this._config);
+            var finDuJeuPanel = new finDuJeuPanel_1.default(this._panelManager);
+            finDuJeuPanel.afficher();
             this._themeManager = new themeManager_1.default(this._config);
             this._reglesPanel = new reglesPanel_1.default(this._panelManager);
             this._finDePartiePanel = new finDePartiePanel_1.default(this._datePartieEnCours, this._panelManager);
             this._configurationPanel = new configurationPanel_1.default(this._panelManager, this._audioPanel, this._themeManager);
-            this.choisirMot(this._idPartieEnCours, this._datePartieEnCours)
-                .then(function (mot) { return __awaiter(_this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            this._motATrouver = mot;
-                            this._input = new input_1.default(this, this._config, this._motATrouver.length, this._motATrouver[0]);
-                            this._panelManager.setInput(this._input);
-                            this._grille = new grille_1.default(this._motATrouver.length, this._maxNbPropositions, this._motATrouver[0], this._audioPanel);
-                            this._compositionMotATrouver = this.decompose(this._motATrouver);
-                            return [4 /*yield*/, this.chargerPropositions(partieEnCours.propositions)];
-                        case 1:
-                            _a.sent();
-                            return [2 /*return*/];
-                    }
-                });
-            }); })
-                .catch(function (reason) { return notificationMessage_1.default.ajouterNotification("No word was found for today, DM Kappawaii#9448 on Discord cause he didn't do his job" + reason); });
+            this._motATrouver = "BEDGE";
+            this._input = new input_1.default(this, this._config, this._motATrouver.length, this._motATrouver[0]);
+            this._panelManager.setInput(this._input);
+            this._grille = new grille_1.default(this._motATrouver.length, this._maxNbPropositions, this._motATrouver[0], this._audioPanel);
+            this._compositionMotATrouver = this.decompose(this._motATrouver);
+            this.chargerPropositions(partieEnCours.propositions);
             this.afficherReglesSiNecessaire();
         }
         Gestionnaire.prototype.getIdPartie = function (partieEnCours) {
@@ -236,13 +226,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
         };
         Gestionnaire.prototype.sauvegarderPartieEnCours = function () {
             sauvegardeur_1.default.sauvegarderPartieEnCours(this._idPartieEnCours, this._datePartieEnCours, this._propositions, this._dateFinPartie);
-        };
-        Gestionnaire.prototype.choisirMot = function (idPartie, datePartie) {
-            return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    return [2 /*return*/, dictionnaire_1.default.getMot(idPartie, datePartie)];
-                });
-            });
         };
         Gestionnaire.prototype.decompose = function (mot) {
             var composition = {};
@@ -349,7 +332,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
         Gestionnaire.prototype.afficherReglesSiNecessaire = function () {
             if (this._config.afficherRegles !== undefined && !this._config.afficherRegles)
                 return;
-            this._reglesPanel.afficher();
+            //this._reglesPanel.afficher();
         };
         return Gestionnaire;
     }());
