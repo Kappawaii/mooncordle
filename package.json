@@ -5,7 +5,7 @@
   "main": "js/main.js",
   "dependencies": {
     "@types/express": "^4.17.13",
-    "express": "^4.17.2",
+    "express": "^4.19.2",
     "readline-sync": "^1.4.10",
     "requirejs": "^2.3.6"
   },
